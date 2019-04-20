@@ -31,7 +31,9 @@
       
 */
 
-
+window.onload = function () {
+      var changingCells = document.querySelectorAll('input[class="sum"]');
+}
 
 
 
