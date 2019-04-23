@@ -32,13 +32,47 @@
 */
 
 window.onload = function () {
+      // Gathers all of the input elements that have the word 'sum' inside of the class attribute
       var changingCells = document.querySelectorAll('input[class="sum"]');
+
+      // Will loop through the changingCells collection and run the calcExp function when the user changes its focus
+      for (var i = 0; i < changingCells.length; i++) {
+            changingCells[i].onchange = calcExp;
+      }
+      // changingCells.onchange = calcExp;
+      document.getElementById("submitButton").onclick = validateSummary;
 }
 
+function validateSummary() {
+      var summary = document.getElementById("summary");
 
+      // This if else statement will display a custom message that will display if the user forgets to type something in the text box
+      if (summary.validity.valueMissing) {
+            summary.setCustomValidity("You must include a summary of the trip in your report.")
+      } else {
+            summary.setCustomValidity("");
+      }
+}
 
+function calcClass(sumClass) {
+      var sumFields = document.getElementsByClassName("sumClass");
+      var sumTotal = 0;
 
+      for (var i = 0; i < sumFields.length; i++) {
+            var itemValue = parseFloat(sumFields[i].value);
+            if (!isNaN(itemValue)) {
+                  itemValue += itemValue;
+            }
+      }
+      return sumTotal;
+}
 
+function calcExp() {
+      var expTable = document.querySelectorAll("table#travelExp tbody tr");
+      for (var i = 0; i < expTable.length; i++) {
+
+      }
+}
 
 function formatNumber(val, decimals) {
       return val.toLocaleString(undefined, {
